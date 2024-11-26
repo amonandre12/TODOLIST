@@ -15,7 +15,7 @@
     <!-- List the tasks -->
     <ul>
       <li v-for="(task, index) in tasks" :key="index">
-        <!-- Affichage des tâches -->
+        <!-- Visible the tasks -->
         <span
           :class="{ completed: task.completed }"
           @dblclick="editTask(index)"
@@ -23,7 +23,7 @@
           {{ task.text }}
         </span>
 
-        <!-- Modifier une tâche -->
+        <!-- Modified the task-->
         <input
           v-if="task.editing"
           v-model="task.text"
@@ -31,7 +31,7 @@
           @blur="stopEditing(index)"
         />
 
-        <!-- Boutons d'actions -->
+        <!-- Action buttons -->
         <div class="actions">
           <button @click="toggleComplete(index)">
             {{ task.completed ? "Annuler" : "Terminer" }}
@@ -49,7 +49,7 @@ import { ref, watch } from "vue";
 export default {
   name: "TodoList",
   setup() {
-    const newTask = ref(""); // Champ pour la nouvelle tâche
+    const newTask = ref(""); 
     const tasks = ref(JSON.parse(localStorage.getItem("tasks")) || []); // Tâches
 
     const addTask = () => {
